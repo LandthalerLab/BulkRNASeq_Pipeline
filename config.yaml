@@ -1,0 +1,50 @@
+#####################
+# Paths
+#####################
+
+# path to metadata file (.tsv format, tab seperated values) for paired reads
+metadata: "metadata.tsv"
+
+# path to fastq files 
+fastq_dir: "/fast/AG_Landthaler/amanukyan/Projects/Igor_PolyAmine/data/fastq_files/"
+
+# main output location
+result_dir: "output/"
+
+###########################
+### References and Indices
+###########################
+
+# Bowtie2 indices for rRNA removal  (NOTE: the path shouldnt have a "/" at the end)
+contamination_reference: "/fast/AG_Landthaler/genomes/hg19_riboprof_contamination/contaminantDBred/homosapiens_riboprof_contaminants"
+
+# Hisat2 aligner prefix
+reference: "/fast/AG_Landthaler/genomes/hg38/GRCh38"
+
+# gtf file 
+annotation: "/fast/AG_Landthaler/genomes/hg38/gencode.v39.annotation.gtf"
+
+######################
+## Scripts
+######################
+
+# DONT CHANGE UNLESS YOU HAVE TO
+featurecounts: "/fast/AG_Landthaler/Pipelines/RNASeq/v1/scripts/featurecounts.R"
+
+######################
+## Parameters
+######################
+
+# bowti2 parameters 
+bowtie2_param: "--no-unal"
+
+# hisat2 parameters 
+hisat2_param: "--no-spliced-alignment --rna-strandness F"
+hisat2_splice_sites: ""
+
+# feature count parameters
+FeatureCount_param: "-p -g gene_name"
+
+# additional options
+remove_contamination: TRUE
+remove_duplicates: TRUE
